@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Acadify</string>
+
+    <string name="new_user_signup">New User? <b>SIGN UP</b></string>
+
+    <string name="OpenDrawer">Open Navigation drawer</string>
+    <string name="CloseDrawer">lose navigation drawer</string>
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="new_to_eduventure_register">New To Eduventure? <b>Signup</b> </string>
+    <string name="already_have_an_account_sign_in">Already have an account? <b>Sign In</b></string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="back_button">Back</string>
+    <string name="enter_student_id">Enter Your Student Id</string>
+    <string name="student_id">Student Id</string>
+    <string name="verify">Verify</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="send_otp">Send Otp</string>
+    <string name="help_message">
+        In case you face any difficulty in verifying your student id, kindly contact us.
+    </string>
+    <string name="need_help">Need Help?</string>
+
+    <string name="create_account">Create an account to continue</string>
+
+    <string name="name">Name</string>
+    <string name="enter_name">Enter your name</string>
+
+    <string name="email">Email</string>
+    <string name="enter_email">Enter your email</string>
+
+    <string name="password">Password</string>
+    <string name="enter_password">Enter your password</string>
+
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_your_password">Confirm your password</string>
+
+    <string name="sign_up">Sign Up</string>
+
+</resources>

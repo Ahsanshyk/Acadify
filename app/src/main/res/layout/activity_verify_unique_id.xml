@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".VerifyUniqueIdActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/back_button"
+                android:src="@drawable/ic_back_black"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/stuId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="100dp"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:text="@string/enter_student_id"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/uniqueIdEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/stuId"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="username"
+                android:background="@drawable/shape_rect_2"
+                android:drawablePadding="20dp"
+                android:drawableTint="@color/colorGray02"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:hint="@string/student_id"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/continueBtn"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/uniqueIdEt"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:text="@string/verify"
+                android:textAllCaps="false" />
+
+            <EditText
+                android:id="@+id/phoneEt"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/continueBtn"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="phone"
+                android:background="@drawable/shape_rect_2"
+                android:drawablePadding="20dp"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:hint="@string/phone_number"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Gray01" />
+
+            <Button
+                android:id="@+id/sendOtpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_below="@id/phoneEt"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:text="@string/send_otp"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/elpBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sendOtpBtn"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/segoe_ui_regular"
+                android:text="@string/help_message"
+                android:textColor="@color/Gray01"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/helpBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/elpBtn"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="@string/need_help"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_circle00"
+        android:backgroundTint="@color/white"
+        android:elevation="30dp"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

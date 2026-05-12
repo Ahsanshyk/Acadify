@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1039755355868",
+    "project_id": "acadify-b5b91",
+    "storage_bucket": "acadify-b5b91.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039755355868:android:70d83afa2d2a68ed437619",
+        "android_client_info": {
+          "package_name": "Acadify.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn1itiCTY-jRD0L1TagLgMOMqVmp71Irw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039755355868:android:6bdcb4f8a7a4416c437619",
+        "android_client_info": {
+          "package_name": "com.ahsan.acadify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn1itiCTY-jRD0L1TagLgMOMqVmp71Irw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
