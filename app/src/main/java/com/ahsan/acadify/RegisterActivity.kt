@@ -17,13 +17,13 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseFirestore: FirebaseFirestore
-    private var uniqueId: String? = ""
-    private var userType: String? = ""
-    private var phoneNumber: String? = ""
-    private var fullName: String? = ""
-    private var email: String? = ""
-    private var password: String? = ""
-    private var confirmPassword: String? = ""
+    private var uniqueId = ""
+    private var userType = "user"
+    private var phoneNumber = ""
+    private var fullName = ""
+    private var email = ""
+    private var password = ""
+    private var confirmPassword = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +33,9 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseFirestore = FirebaseFirestore.getInstance()
 
-        uniqueId = intent.getStringExtra("uniqueId")
-        phoneNumber = intent.getStringExtra("phoneNumber")
-        userType = intent.getStringExtra("userType")
+        uniqueId = intent.getStringExtra("uniqueId") ?: ""
+        phoneNumber = intent.getStringExtra("phoneNumber") ?: ""
+        userType = intent.getStringExtra("userType") ?: "user"
 
         binding.registerBtn.setOnClickListener {
             validateData()
@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun validateData() {
         fullName = binding.nameEt.text.toString().trim()
         email = binding.emailEt.text.toString().trim()
-        password = binding.passwordEt.text.toString().trim()
+        password = binding.passwordEt.text.toString()
         confirmPassword = binding.cPasswordEt.text.toString().trim()
 
         if (TextUtils.isEmpty(fullName)) {
@@ -104,32 +104,56 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun saveFirebaseData() {
+
         binding.progressBar.visibility = View.VISIBLE
-        val timestamp = "" + System.currentTimeMillis()
 
-        val hashMap: HashMap<String, Any> = HashMap()
-        hashMap["uid"] = firebaseAuth.uid!!
-        hashMap["email"] = email!!
-        hashMap["name"] = fullName!!
-        hashMap["uniqueId"] = uniqueId!!
-        hashMap["phone"] = phoneNumber!!
-        hashMap["userType"] = userType!!
-        hashMap["timestamp"] = timestamp
-        hashMap["online"] = "true"
-        hashMap["profileImage"] = ""
+        val uid = firebaseAuth.uid ?: return
 
-        val documentReference = firebaseFirestore.collection("Users").document(firebaseAuth.uid!!)
-        documentReference.set(hashMap)
+        val userMap = hashMapOf<String, Any>(
+            "uid" to uid,
+            "name" to fullName,
+            "email" to email,
+            "userType" to "user",
+            "online" to "true",
+            "profileImage" to "",
+            "phone" to "",
+            "uniqueId" to "",
+            "timestamp" to System.currentTimeMillis().toString()
+        )
+
+        firebaseFirestore.collection("Users")
+            .document(uid)
+            .set(userMap)
             .addOnSuccessListener {
+
                 binding.progressBar.visibility = View.GONE
-                addUniqueIdToRegisteredUniqueId(uniqueId!!)
-                //                            startActivity(new Intent(RegisterActivity.this, MainUsersActivity.class));
-                startActivity(Intent(this@RegisterActivity, VerifyEmailActivity::class.java))
+
+                Toast.makeText(
+                    this,
+                    "Data Saved Successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                startActivity(
+                    Intent(
+                        this,
+                        LoginActivity::class.java
+                    )
+                )
+
                 finish()
             }
             .addOnFailureListener { e ->
+
                 binding.progressBar.visibility = View.GONE
-                Toast.makeText(this@RegisterActivity, "" + e.message, Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(
+                    this,
+                    "Firestore Error: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                Log.e("FIRESTORE_SAVE", e.message.toString())
             }
     }
 

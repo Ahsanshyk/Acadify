@@ -3,6 +3,7 @@ package com.ahsan.acadify
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
@@ -11,7 +12,7 @@ import com.ahsan.acadify.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-
+import com.google.firebase.firestore.SetOptions
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
@@ -54,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
     private fun validateData() {
 
         email = binding.emailEt.text.toString().trim()
-        password = binding.passwordEt.text.toString().trim()
+        password = binding.passwordEt.text.toString()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 
@@ -105,11 +106,11 @@ class LoginActivity : AppCompatActivity() {
         val hashMap: HashMap<String, Any> = HashMap()
         hashMap["online"] = "true"
 
-        val documentReference: DocumentReference =
+        val documentReference =
             firebaseFirestore.collection("Users")
                 .document(firebaseAuth.uid!!)
 
-        documentReference.update(hashMap)
+        documentReference.set(hashMap, SetOptions.merge())
             .addOnSuccessListener {
 
                 checkUser()
@@ -136,68 +137,18 @@ class LoginActivity : AppCompatActivity() {
                 .document(firebaseUser!!.uid)
 
         documentReference.get()
-            .addOnSuccessListener { ds ->
+            .addOnSuccessListener {
 
                 binding.progressBar.visibility = View.GONE
 
-                val userType = ds.getString("userType")
-
-                if (!firebaseUser.isEmailVerified) {
-
-                    startActivity(
-                        Intent(
-                            this@LoginActivity,
-                            VerifyEmailActivity::class.java
-                        )
+                startActivity(
+                    Intent(
+                        this@LoginActivity,
+                        MainActivity::class.java
                     )
+                )
 
-                    finishAffinity()
-
-                } else {
-
-                    when (userType) {
-
-                        "teachers" -> {
-                            startActivity(
-                                Intent(
-                                    this@LoginActivity,
-                                    MainActivity::class.java
-                                )
-                            )
-                            finish()
-                        }
-
-                        "user" -> {
-                            startActivity(
-                                Intent(
-                                    this@LoginActivity,
-                                    MainActivity::class.java
-                                )
-                            )
-                            finish()
-                        }
-
-                        "anurag" -> {
-                            startActivity(
-                                Intent(
-                                    this@LoginActivity,
-                                    MainActivity::class.java
-                                )
-                            )
-                            finish()
-                        }
-
-                        else -> {
-
-                            Toast.makeText(
-                                this,
-                                "Unknown User Type",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                }
-
+                finish()
             }
             .addOnFailureListener { e ->
 
@@ -205,9 +156,11 @@ class LoginActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    e.message,
-                    Toast.LENGTH_SHORT
+                    "Error Code: ${e.localizedMessage}",
+                    Toast.LENGTH_LONG
                 ).show()
+
+                Log.e("LOGIN_ERROR", e.message.toString())
             }
     }
 }

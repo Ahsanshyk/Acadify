@@ -33,6 +33,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import com.ahsan.acadify.Adapters.AdapterTimeTable
 import com.ahsan.acadify.Models.ModelTimeTable
+import com.google.firebase.firestore.SetOptions
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -393,7 +394,7 @@ class MainActivity : AppCompatActivity() {
         val documentReference = firebaseFirestore.collection("Users").document(
             firebaseAuth.uid!!
         )
-        documentReference.update(hashMap)
+        documentReference.set(hashMap, SetOptions.merge())
             .addOnSuccessListener {
                 progressDialog!!.setMessage("Logging Out...!")
                 progressDialog!!.show()

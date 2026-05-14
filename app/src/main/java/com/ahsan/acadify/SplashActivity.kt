@@ -26,42 +26,53 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun checkUsers() {
+
         val firebaseUser = firebaseAuth.currentUser
+
+        // No user logged in
         if (firebaseUser == null) {
-            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
-        } else {
-            val documentReference = firebaseFirestore.collection("Users").document(firebaseUser.uid)
-            documentReference.addSnapshotListener(
-                this
-            ) { value, error ->
-                val userType = "" + value!!.getString("userType")
-                if (userType == "teachers") {
-                    if (!firebaseUser.isEmailVerified) {
-                        startActivity(Intent(this@SplashActivity, VerifyEmailActivity::class.java))
-                        finishAffinity()
-                    } else {
-                        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                        finish()
-                    }
-                } else if (userType == "user") {
-                    if (!firebaseUser.isEmailVerified) {
-                        startActivity(Intent(this@SplashActivity, VerifyEmailActivity::class.java))
-                        finishAffinity()
-                    } else {
-                        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                        finish()
-                    }
-                } else if (userType == "anurag") {
-                    if (!firebaseUser.isEmailVerified) {
-                        startActivity(Intent(this@SplashActivity, VerifyEmailActivity::class.java))
-                        finishAffinity()
-                    } else {
-                        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                        finish()
-                    }
+            return
+        }
+
+        // User logged in
+        firebaseFirestore.collection("Users")
+            .document(firebaseUser.uid)
+            .get()
+            .addOnSuccessListener { document ->
+
+                // Document does not exist
+                if (!document.exists()) {
+
+                    firebaseAuth.signOut()
+
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                    return@addOnSuccessListener
+                }
+
+                val userType = document.getString("userType")
+
+                // Email not verified
+                if (!firebaseUser.isEmailVerified) {
+
+                    startActivity(Intent(this, VerifyEmailActivity::class.java))
+                    finishAffinity()
+
+                } else {
+
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 }
             }
-        }
+            .addOnFailureListener {
+
+                firebaseAuth.signOut()
+
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
     }
 }

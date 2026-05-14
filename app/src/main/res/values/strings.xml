@@ -52,4 +52,18 @@
 
     <string name="sign_up">Sign Up</string>
 
+    <string name="register_title">Acadify</string>
+    <string name="register_subtitle">Create an account to continue</string>
+    <string name="hint_name">Enter your Name</string>
+    <string name="hint_email">Enter your Email</string>
+    <string name="hint_password">Enter your Password</string>
+    <string name="hint_confirm_password">Confirm your Password</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="login_title">Acadify</string>
+    <string name="login_subtitle">Login your account to continue</string>
+    <string name="hint_login_email">Enter your Email</string>
+    <string name="hint_login_password">Enter your Password</string>
+    <string name="btn_login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+
 </resources>

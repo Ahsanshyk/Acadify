@@ -15,4 +15,21 @@
     <color name="colorGray01">#D6D5D5</color>
     <color name="strokesColor">#D6D5D5</color>
     <color name="colorGray02">#959595</color>
+
+    <!-- Base App Colors -->
+
+    <!-- Material 3 Theme Constants (Modern Teal/Blue theme) -->
+    <color name="md_theme_primary">#FF006B5E</color>
+    <color name="md_theme_onPrimary">#FFFFFFFF</color>
+    <color name="md_theme_primaryContainer">#FF7AF8E7</color>
+    <color name="md_theme_onPrimaryContainer">#FF00201B</color>
+
+    <color name="md_theme_secondary">#FF4B635B</color>
+    <color name="md_theme_onSecondary">#FFFFFFFF</color>
+
+    <color name="md_theme_background">#FFFBFDF9</color>
+    <color name="md_theme_onBackground">#FF191C1B</color>
+    <color name="md_theme_surface">#FFFBFDF9</color>
+    <color name="md_theme_onSurface">#FF191C1B</color>
+    <color name="md_theme_outline">#FF6F7975</color>
 </resources>
