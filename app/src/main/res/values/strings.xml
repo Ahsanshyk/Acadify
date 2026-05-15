@@ -65,5 +65,70 @@
     <string name="hint_login_password">Enter your Password</string>
     <string name="btn_login">Login</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="anurag_kashyap">Anurag Kashyap</string>
+    <string name="hello">Hello</string>
+    <string name="todo">TODO</string>
+    <string name="verify_your_email">Verify Your Email</string>
+    <string name="profile_title">Profile</string>
+    <string name="sample_full_name">Full Name</string>
+    <string name="sample_email">anurag@kashyap.com</string>
+    <string name="sample_uid">123456789123</string>
+    <string name="sample_phone">+917091767371</string>
+    <string name="label_country">Country</string>
+    <string name="label_state">State</string>
+    <string name="label_city">City</string>
+    <string name="not_available">N/A</string>
+    <string name="label_address">Address</string>
+    <string name="label_registration_no">Registration No</string>
+    <string name="label_dob">DOB</string>
+    <string name="label_father_name">Father Name</string>
+    <string name="label_mother_name">Mother Name</string>
+    <string name="label_branch">Branch</string>
+    <string name="label_semester">Semester</string>
+    <string name="label_session">Session</string>
+    <string name="label_seat_type">Seat Type</string>
+    <string name="label_hostler">Hostler</string>
+    <string name="sample_data">20033440008</string>
+    <string name="sample_dob">dd/MM/yyyy</string>
+
+
+    <!-- Profile Edit Screen -->
+    <string name="profile_edit_title">Profile</string>
+    <string name="label_name">Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_phone">Phone</string>
+    <string name="label_district">District</string>
+    <string name="label_complete_address">Complete Address</string>
+    <string name="btn_update">Update</string>
+
+
+    <string name="back">Back</string>
+
+    <string name="upload_material">Upload Material</string>
+
+    <string name="add_study_material">Add Study Material</string>
+
+    <string name="share_resources">
+        Share resources with your students easily.
+    </string>
+
+    <string name="tap_select_pdf">
+        Tap to select PDF file
+    </string>
+
+    <string name="subject_name">Subject Name</string>
+
+    <string name="chapter_topic">Chapter / Topic</string>
+
+    <string name="semester">Semester</string>
+
+    <string name="branch">Branch</string>
+
+    <string name="confirm_upload">
+        Confirm and Upload
+    </string>
+
+    <string name="pdf_icon">PDF Icon</string>
+
 
 </resources>

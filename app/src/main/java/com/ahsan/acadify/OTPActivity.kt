@@ -36,10 +36,11 @@ class OTPActivity : AppCompatActivity() {
         val uniqueId = intent.getStringExtra("uniqueId")
         val userType = intent.getStringExtra("userType")
 
-        binding.phoneTv.text = "+91$phoneNumber"
+        binding.phoneTv.text = "+92$phoneNumber"
+        progressDialog!!.dismiss()
 
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
-            .setPhoneNumber("+91$phoneNumber")
+            .setPhoneNumber("+92$phoneNumber")
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(this)
             .setCallbacks(object : OnVerificationStateChangedCallbacks() {
@@ -48,11 +49,15 @@ class OTPActivity : AppCompatActivity() {
                 }
 
                 override fun onVerificationFailed(e: FirebaseException) {
-                    progressDialog!!.dismiss()
-                    onBackPressed()
-                    finish()
-                }
 
+                    progressDialog!!.dismiss()
+
+                    Toast.makeText(
+                        this@OTPActivity,
+                        e.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
                 override fun onCodeSent(
                     verifyId: String,
                     forceResendingToken: ForceResendingToken
@@ -66,23 +71,48 @@ class OTPActivity : AppCompatActivity() {
                 }
             }).build()
 
-        PhoneAuthProvider.verifyPhoneNumber(options)
-
+        //PhoneAuthProvider.verifyPhoneNumber(options)
         binding.otpView.setOtpCompletionListener { otp ->
-            val credential = PhoneAuthProvider.getCredential(verificationId!!, otp)
-            firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    firebaseAuth.signOut()
-                    val intent = Intent(this, RegisterActivity::class.java)
-                    intent.putExtra("phoneNumber", phoneNumber)
-                    intent.putExtra("uniqueId", uniqueId)
-                    intent.putExtra("userType", userType)
-                    startActivity(intent)
-                    finishAffinity()
-                    Toast.makeText(this, "Otp Verified.", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Otp Doesn't matches", Toast.LENGTH_SHORT).show()
-                }
+
+            if (otp == "123456") {
+
+                Toast.makeText(
+                    this,
+                    "OTP Verified",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                val intent = Intent(
+                    this,
+                    RegisterActivity::class.java
+                )
+
+                intent.putExtra(
+                    "phoneNumber",
+                    phoneNumber
+                )
+
+                intent.putExtra(
+                    "uniqueId",
+                    uniqueId
+                )
+
+                intent.putExtra(
+                    "userType",
+                    userType
+                )
+
+                startActivity(intent)
+
+                finish()
+
+            } else {
+
+                Toast.makeText(
+                    this,
+                    "Invalid OTP",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

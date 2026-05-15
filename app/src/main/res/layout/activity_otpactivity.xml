@@ -49,6 +49,7 @@
                 android:layout_below="@id/otp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="15dp"
+                android:textColor="@color/Gray01"
                 android:fontFamily="@font/seg_ui_semibold"
                 android:text="An 6 digit code has been sent to"
                 android:textSize="16sp" />
@@ -60,8 +61,9 @@
                 android:layout_below="@id/otpTv"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="0dp"
+                android:textColor="@color/black"
                 android:fontFamily="@font/seg_ui_semibold"
-                android:text="+917091767371"
+                android:text="+92 7091767371"
                 android:textSize="16sp" />
 
             <ImageView

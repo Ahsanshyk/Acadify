@@ -15,99 +15,199 @@ class VerifyUniqueIdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVerifyUniqueIdBinding
     private lateinit var firebaseFirestore: FirebaseFirestore
     private lateinit var firebaseAuth: FirebaseAuth
+
     private var userType: String? = ""
     private var uniqueId: String? = ""
-    private var isUniqueId = false
+
     private var isRegistered = false
+    private var phoneNumber: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityVerifyUniqueIdBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseFirestore = FirebaseFirestore.getInstance()
 
+        // Disable fields initially
         binding.phoneEt.isEnabled = false
         binding.sendOtpBtn.isEnabled = false
 
+        // Help Button
         binding.helpBtn.setOnClickListener {
-            startActivity(Intent(this, NeedHelpActivity::class.java))
+
+            startActivity(
+                Intent(
+                    this,
+                    NeedHelpActivity::class.java
+                )
+            )
         }
-        binding.sendOtpBtn.setOnClickListener {
-            startActivity(Intent(this, OTPActivity::class.java))
-        }
+
+        // Back Button
         binding.backBtn.setOnClickListener {
+
             onBackPressed()
         }
+
+        // Verify Unique ID Button
         binding.continueBtn.setOnClickListener {
+
             validateData()
+        }
+
+        // Send OTP Button
+        binding.sendOtpBtn.setOnClickListener {
+
+            validatePhoneNumber()
         }
     }
 
     private fun validateData() {
+
         uniqueId = binding.uniqueIdEt.text.toString().trim()
+
         if (TextUtils.isEmpty(uniqueId)) {
-            Toast.makeText(this, "Enter Your Unique Id....!", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(
+                this,
+                "Enter Your Unique Id....!",
+                Toast.LENGTH_SHORT
+            ).show()
+
         } else {
+
             checkExistingUniqueId()
         }
     }
 
     private fun checkExistingUniqueId() {
+
         binding.progressBar.visibility = View.VISIBLE
 
         val documentReference =
-            firebaseFirestore.collection("RegisteredUniqueId").document(uniqueId!!)
-        documentReference.addSnapshotListener { value, error ->
-            isRegistered = value!!.exists()
-            if (isRegistered) {
-                binding.progressBar.visibility = View.GONE
-                Toast.makeText(this@VerifyUniqueIdActivity, "This Unique_Id is already Registered...!!", Toast.LENGTH_SHORT).show()
-            } else {
-                verifyUniqueId()
+            firebaseFirestore.collection("RegisteredUniqueId")
+                .document(uniqueId!!)
+
+        documentReference.get()
+            .addOnSuccessListener { document ->
+
+                isRegistered = document.exists()
+
+                if (isRegistered) {
+
+                    binding.progressBar.visibility = View.GONE
+
+                    Toast.makeText(
+                        this@VerifyUniqueIdActivity,
+                        "This Unique ID is already Registered...!!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                } else {
+
+                    verifyUniqueId()
+                }
             }
-        }
+            .addOnFailureListener { e ->
+
+                binding.progressBar.visibility = View.GONE
+
+                Toast.makeText(
+                    this,
+                    e.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
     }
 
     private fun verifyUniqueId() {
-        binding.progressBar.visibility = View.VISIBLE
-        val documentReference = firebaseFirestore.collection("UniqueId").document(
-            uniqueId!!
-        )
-        documentReference.addSnapshotListener { snapshot, error ->
-            isUniqueId = snapshot!!.exists()
-            if (isUniqueId) {
+
+        val studentId = binding.uniqueIdEt.text.toString().trim()
+
+        firebaseFirestore.collection("StudentIds")
+            .document(studentId)
+            .get()
+            .addOnSuccessListener { document ->
+
                 binding.progressBar.visibility = View.GONE
-                verifyPhoneNumber()
-                binding.sendOtpBtn.isEnabled = true
-                Toast.makeText(this@VerifyUniqueIdActivity, "Unique-Id Verified....!", Toast.LENGTH_SHORT).show()
-            } else {
-                binding.progressBar.visibility = View.GONE
-                Toast.makeText(this@VerifyUniqueIdActivity, "Unique-Id Not Found....!", Toast.LENGTH_SHORT).show()
+
+                if (document.exists()) {
+
+                    val phone = document.getString("phone")
+
+                    // IMPORTANT FIX
+                    userType = document.getString("userType")
+
+                    binding.phoneEt.setText(phone)
+
+                    Toast.makeText(
+                        this,
+                        "Student ID Verified",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // Enable OTP Button
+                    binding.sendOtpBtn.isEnabled = true
+
+                } else {
+
+                    Toast.makeText(
+                        this,
+                        "Unique ID not found",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-            val phone = "" + snapshot.getString("phone")
-            userType = "" + snapshot.getString("userType")
-            binding.phoneEt.setText(phone)
-        }
+            .addOnFailureListener { e ->
+
+                binding.progressBar.visibility = View.GONE
+
+                Toast.makeText(
+                    this,
+                    e.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
     }
 
-    private fun verifyPhoneNumber() {
-        binding.sendOtpBtn.setOnClickListener { validatePhoneNumber() }
-    }
-
-    private var phoneNumber: String? = null
     private fun validatePhoneNumber() {
+
         phoneNumber = binding.phoneEt.text.toString().trim()
+
         if (TextUtils.isEmpty(phoneNumber)) {
-            Toast.makeText(this, "Enter Your Phone Number....", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(
+                this,
+                "Phone Number not found",
+                Toast.LENGTH_SHORT
+            ).show()
+
             return
-        } else {
-            val intent = Intent(this@VerifyUniqueIdActivity, OTPActivity::class.java)
-            intent.putExtra("phoneNumber", binding.phoneEt.text.toString())
-            intent.putExtra("uniqueId", binding.uniqueIdEt.text.toString())
-            intent.putExtra("userType", userType)
-            startActivity(intent)
         }
+
+        val intent = Intent(
+            this@VerifyUniqueIdActivity,
+            OTPActivity::class.java
+        )
+
+        intent.putExtra(
+            "phoneNumber",
+            phoneNumber
+        )
+
+        intent.putExtra(
+            "uniqueId",
+            binding.uniqueIdEt.text.toString().trim()
+        )
+
+        intent.putExtra(
+            "userType",
+            userType
+        )
+
+        startActivity(intent)
     }
 }

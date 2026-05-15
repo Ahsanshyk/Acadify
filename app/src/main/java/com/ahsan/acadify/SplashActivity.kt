@@ -37,42 +37,56 @@ class SplashActivity : AppCompatActivity() {
             return
         }
 
-        // User logged in
-        firebaseFirestore.collection("Users")
-            .document(firebaseUser.uid)
-            .get()
-            .addOnSuccessListener { document ->
+        // Reload user to get latest email verification status
+        firebaseUser.reload().addOnSuccessListener {
 
-                // Document does not exist
-                if (!document.exists()) {
+            firebaseFirestore.collection("Users")
+                .document(firebaseUser.uid)
+                .get()
+                .addOnSuccessListener { document ->
+
+                    // Document missing
+                    if (!document.exists()) {
+
+                        firebaseAuth.signOut()
+
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+
+                        return@addOnSuccessListener
+                    }
+
+                    // Email not verified
+                    if (!firebaseUser.isEmailVerified) {
+
+                        startActivity(
+                            Intent(
+                                this,
+                                VerifyEmailActivity::class.java
+                            )
+                        )
+
+                        finishAffinity()
+
+                    } else {
+
+                        startActivity(
+                            Intent(
+                                this,
+                                MainActivity::class.java
+                            )
+                        )
+
+                        finish()
+                    }
+                }
+                .addOnFailureListener {
 
                     firebaseAuth.signOut()
 
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
-                    return@addOnSuccessListener
                 }
-
-                val userType = document.getString("userType")
-
-                // Email not verified
-                if (!firebaseUser.isEmailVerified) {
-
-                    startActivity(Intent(this, VerifyEmailActivity::class.java))
-                    finishAffinity()
-
-                } else {
-
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }
-            }
-            .addOnFailureListener {
-
-                firebaseAuth.signOut()
-
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
+        }
     }
 }

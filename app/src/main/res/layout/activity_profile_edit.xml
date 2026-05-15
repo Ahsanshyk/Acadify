@@ -1,649 +1,643 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/md_theme_background"
     tools:context=".ProfileEditActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical">
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="4dp"
+            android:padding="12dp"
             android:src="@drawable/ic_back_black"
-            app:tint="@color/colorPrimary" />
+            app:tint="@color/md_theme_onSurface"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Profile"
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            android:layout_centerInParent="true"
             android:fontFamily="@font/segoe_ui_bold"
+            android:text="@string/profile_edit_title"
+            android:textColor="@color/md_theme_onBackground"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarRl">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbarRl">
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="60dp">
 
             <com.blogspot.atifsoftwares.circularimageview.CircularImageView
                 android:id="@+id/profileIv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:tint="@color/colorGray01"
-                app:c_border="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/ic_person_gray"
-                android:backgroundTint="@color/colorGray02"
-                app:c_border_color="@color/colorPrimary"
-                app:c_border_width="1dp" />
+                android:backgroundTint="@color/md_theme_primaryContainer"
+                app:c_border="true"
+                app:c_border_color="@color/md_theme_primary"
+                app:c_border_width="2dp" />
 
-
-            <RelativeLayout
-                android:id="@+id/nameRl"
+            <!-- Modern Card Wrapper for the form -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profileIv"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp">
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/md_theme_surface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/md_theme_outline"
+                app:strokeWidth="0.5dp">
 
-                <TextView
-                    android:id="@+id/tv"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:text="Name"
-                    android:textColor="@color/Gray01"
-                    android:textSize="14sp" />
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp">
 
-                <EditText
-                    android:id="@+id/nameEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:layout_below="@id/tv"
-                    android:text="Anurag Kashyap"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/seg_ui_semibold"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/emailRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/emailEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv1"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@null"
-                    android:drawableEnd="@drawable/ic_verified_user"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="anurag@kashyp.com"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:text="Email"
-                    android:textColor="@color/Gray01"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/emailNotVerifiedRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/notVerifiedEmailTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv21"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="anurag@kashyp.com"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv21"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:text="Email"
-                    android:textColor="@color/Gray01"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/phoneRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/emailRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/phoneTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv3"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="783477432"
-                    android:drawableEnd="@drawable/ic_verified_user"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:text="Phone"
-                    android:textColor="@color/Gray01"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/addressRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/phoneRl"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
-
-                <RelativeLayout
-                    android:id="@+id/countryRl"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:id="@+id/countryEt"
+                    <!-- Name Section -->
+                    <LinearLayout
+                        android:id="@+id/nameRl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv31"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@null"
-                        android:fontFamily="@font/seg_ui_semibold"
-                        android:text="India"
-                        android:textSize="16sp" />
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv31"
+                        <TextView
+                            android:id="@+id/tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_name"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/nameEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Enter name"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!-- Email Verified Section -->
+                    <LinearLayout
+                        android:id="@+id/emailRl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="0dp"
-                        android:fontFamily="@font/segoe_ui_regular"
-                        android:text="Country"
-                        android:textColor="@color/Gray01"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_email"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-                <RelativeLayout
-                    android:id="@+id/stateRl"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1">
+                        <EditText
+                            android:id="@+id/emailEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:drawableEnd="@drawable/ic_verified_user"
+                            android:focusable="false"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Enter email"
+                            android:inputType="none"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp"
+                            app:drawableTint="@color/md_theme_primary" />
+                    </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/stateEt"
+                    <!-- Email Not Verified Section -->
+                    <LinearLayout
+                        android:id="@+id/emailNotVerifiedRl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv13"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@null"
-                        android:fontFamily="@font/seg_ui_semibold"
-                        android:text="Jharkhand"
-                        android:textSize="16sp" />
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/tv13"
+                        <TextView
+                            android:id="@+id/tv21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_email"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:id="@+id/notVerifiedEmailTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:focusable="false"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Enter email"
+                            android:inputType="none"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!-- Phone Section -->
+                    <LinearLayout
+                        android:id="@+id/phoneRl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="0dp"
-                        android:fontFamily="@font/segoe_ui_regular"
-                        android:text="State"
-                        android:textColor="@color/Gray01"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_phone"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-                <RelativeLayout
-                    android:id="@+id/districtRl"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1">
+                        <EditText
+                            android:id="@+id/phoneTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:drawableEnd="@drawable/ic_verified_user"
+                            android:focusable="false"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Enter phone"
+                            android:inputType="none"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp"
+                            app:drawableTint="@color/md_theme_primary" />
+                    </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/cityEt"
+                    <!-- Address Section (Country/State/District) -->
+                    <LinearLayout
+                        android:id="@+id/addressRl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv14"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@null"
-                        android:fontFamily="@font/seg_ui_semibold"
-                        android:text="Giridih"
-                        android:textSize="16sp" />
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
 
-                    <TextView
-                        android:id="@+id/tv14"
+                        <LinearLayout
+                            android:id="@+id/countryRl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv31"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoe_ui_regular"
+                                android:text="@string/label_country"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/countryEt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_edit_text_line"
+                                android:fontFamily="@font/seg_ui_semibold"
+                                android:hint="N/A"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/md_theme_onBackground"
+                                android:textColorHint="@color/md_theme_onSurfaceVariant"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/stateRl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv13"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoe_ui_regular"
+                                android:text="@string/label_state"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/stateEt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_edit_text_line"
+                                android:fontFamily="@font/seg_ui_semibold"
+                                android:hint="N/A"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/md_theme_onBackground"
+                                android:textColorHint="@color/md_theme_onSurfaceVariant"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/districtRl"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv14"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoe_ui_regular"
+                                android:text="@string/label_district"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/cityEt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_edit_text_line"
+                                android:fontFamily="@font/seg_ui_semibold"
+                                android:hint="N/A"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/md_theme_onBackground"
+                                android:textColorHint="@color/md_theme_onSurfaceVariant"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Complete Address Section -->
+                    <LinearLayout
+                        android:id="@+id/cAddressRl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="0dp"
-                        android:fontFamily="@font/segoe_ui_regular"
-                        android:text="District"
-                        android:textColor="@color/Gray01"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_complete_address"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
+                        <EditText
+                            android:id="@+id/addressEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <!-- Registration No Section -->
+                    <LinearLayout
+                        android:id="@+id/regiNoRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/tv5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_registration_no"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-            <RelativeLayout
-                android:id="@+id/cAddressRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/addressRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
+                        <EditText
+                            android:id="@+id/regNoEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Complete Address"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
+                    <!-- DOB Section -->
+                    <LinearLayout
+                        android:id="@+id/dobRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/addressEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv4"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="wdjicbiuwbcwdcnoiwicnow"
-                    android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/tv6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_dob"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-            </RelativeLayout>
+                        <EditText
+                            android:id="@+id/dobEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="dd/mm/yyyy"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/regiNoRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cAddressRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
+                    <!-- Father's Name Section -->
+                    <LinearLayout
+                        android:id="@+id/fatherNameRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Registration No."
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/tv7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_father_name"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-                <EditText
-                    android:id="@+id/regNoEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv5"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="20033440008"
-                    android:textSize="16sp" />
+                        <EditText
+                            android:id="@+id/fatherNameEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-            </RelativeLayout>
+                    <!-- Mother's Name Section -->
+                    <LinearLayout
+                        android:id="@+id/motherNameRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/dobRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/regiNoRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/tv8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_mother_name"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/tv6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="DOB"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/motherNameEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-                <EditText
-                    android:id="@+id/dobEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv6"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="08/02/2002"
-                    android:textSize="16sp" />
+                    <!-- Branch Section -->
+                    <LinearLayout
+                        android:id="@+id/branchRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-            </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_branch"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-            <RelativeLayout
-                android:id="@+id/fatherNameRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dobRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
+                        <EditText
+                            android:id="@+id/branchEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Father's Name"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
+                    <!-- Semester Section -->
+                    <LinearLayout
+                        android:id="@+id/semRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/fatherNameEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv7"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="Dinesh Prasad Singh"
-                    android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/tv10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_semester"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-            </RelativeLayout>
+                        <EditText
+                            android:id="@+id/semEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/motherNameRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/fatherNameRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
+                    <!-- Session Section -->
+                    <LinearLayout
+                        android:id="@+id/sessionRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mother's Name"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/tv11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_session"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-                <EditText
-                    android:id="@+id/motherNameEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv8"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="Sunita Devi"
-                    android:textSize="16sp" />
+                        <EditText
+                            android:id="@+id/sessionEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-            </RelativeLayout>
+                    <!-- Seat Type Section -->
+                    <LinearLayout
+                        android:id="@+id/seatRl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/branchRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/motherNameRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/tv12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoe_ui_regular"
+                            android:text="@string/label_seat_type"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/tv9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Branch"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/seatTypeEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_edit_text_line"
+                            android:fontFamily="@font/seg_ui_semibold"
+                            android:hint="Not provided"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/md_theme_onBackground"
+                            android:textColorHint="@color/md_theme_onSurfaceVariant"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
-                <EditText
-                    android:id="@+id/branchEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv9"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="CSE"
-                    android:textSize="16sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/semRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/branchRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/tv10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Semester"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
-
-                <EditText
-                    android:id="@+id/semEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv10"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="4th Sem"
-                    android:textSize="16sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/sessionRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/semRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/tv11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Session"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
-
-                <EditText
-                    android:id="@+id/sessionEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv11"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="2020_2024"
-                    android:textSize="16sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/seatRl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/sessionRl"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/tv12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Seat Type"
-                    android:fontFamily="@font/segoe_ui_regular"
-                    android:textColor="@color/Gray01"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="10dp"
-                    android:textSize="14sp"/>
-
-                <EditText
-                    android:id="@+id/seatTypeEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv12"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@null"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:text="Regular"
-                    android:textSize="16sp" />
-
-            </RelativeLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <Button
                 android:id="@+id/updateBtn"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_below="@id/seatRl"
-                android:layout_marginBottom="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/shape_rect02"
-                android:text="Update"
+                android:text="@string/btn_update"
                 android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:textColor="@color/md_theme_onPrimary"
+                android:textSize="16sp" />
 
-
-        </RelativeLayout>
-
-    </ScrollView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <RelativeLayout
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_centerInParent="true"
         android:background="@drawable/shape_circle00"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/md_theme_surface"
         android:elevation="30dp"
-        android:visibility="gone">
+        android:padding="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
-
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/md_theme_primary" />
     </RelativeLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

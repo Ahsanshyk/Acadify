@@ -1,451 +1,367 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_theme_background"
     tools:context=".ProfileActivity">
 
+    <!-- Top Background Decor -->
     <View
+        android:id="@+id/topBg"
         android:layout_width="match_parent"
-        android:layout_height="165dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/back02" />
+        android:layout_height="160dp"
+        android:background="@drawable/back02"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/toolbarRl"
+    <!-- Bottom White Rounded Background Decor -->
+    <View
+        android:id="@+id/bottomBg"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/shape_rect04"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Toolbar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbarRl"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
         android:background="@drawable/shape_rect01"
-        android:layout_height="?actionBarSize">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_back_black" />
-
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/titleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Profile"
-            android:textSize="20dp"
+            android:text="@string/profile_title"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
-        android:background="@drawable/shape_rect04" />
-
+    <!-- Profile Image -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profileIv"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:background="@color/textBox"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="70dp"
+        android:background="@color/md_theme_primaryContainer"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_person_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarRl"
         app:shapeAppearance="@style/styleRoundCornerImage" />
 
-    <TextView
-        android:id="@+id/nameTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profileIv"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:text="Full Name"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    <!-- Scrollable Content for smaller devices -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileIv">
 
-    <ImageView
-        android:id="@+id/adminVector"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_toEndOf="@id/nameTv"
-        android:layout_below="@id/profileIv"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_verified_user" />
-
-    <TextView
-        android:id="@+id/emailTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nameTv"
-        android:layout_centerHorizontal="true"
-        android:text="anurag@kashyap.com"
-        android:textColor="@color/black"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/uniqueIdTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/emailTv"
-        android:layout_centerHorizontal="true"
-        android:text="123456789123"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/phoneTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/uniqueIdTv"
-        android:layout_centerHorizontal="true"
-        android:text="+917091767371"
-        android:textColor="@color/black"
-        android:textSize="12sp" />
-
-    <LinearLayout
-        android:id="@+id/detailsLl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/phoneTv"
-        android:layout_marginTop="8dp">
-
-        <LinearLayout
-
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
 
             <TextView
+                android:id="@+id/nameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Country"
+                android:text="@string/sample_full_name"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/adminVector"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="4dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_verified_user"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/nameTv"
+                app:layout_constraintStart_toEndOf="@id/nameTv"
+                app:layout_constraintTop_toTopOf="@id/nameTv"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/countryTv"
+                android:id="@+id/emailTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="N/A"
-                android:textColor="@color/black"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="State"
+                android:layout_marginTop="4dp"
+                android:text="@string/sample_email"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameTv" />
 
             <TextView
-                android:id="@+id/stateTv"
+                android:id="@+id/uniqueIdTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="N/A"
-                android:textColor="@color/black"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="City"
+                android:text="@string/sample_uid"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailTv" />
 
             <TextView
-                android:id="@+id/cityTv"
+                android:id="@+id/phoneTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="N/A"
-                android:textColor="@color/black"/>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/detailsLl"
-        android:layout_marginTop="8dp"
-        android:background="@color/Gray01"/>
-
-    <TextView
-        android:id="@+id/addressTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/view1"
-        android:layout_centerHorizontal="true"
-        android:padding="5dp"
-        android:text="Address"
-        android:maxLines="2"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/addressTv"
-        android:layout_marginTop="5dp"
-        android:background="@color/Gray01"/>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/view2"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_centerInParent="true"
-        android:padding="10dp">
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginTop="5dp"
-                android:text="Registration No"
+                android:text="@string/sample_phone"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uniqueIdTv" />
 
-            <TextView
-                android:id="@+id/regNoTv"
-                android:layout_width="wrap_content"
+            <!-- Card 1: Location & Address -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/locationCard"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="0.5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phoneTv">
 
-        </TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-        <TableRow>
+                    <LinearLayout
+                        android:id="@+id/detailsLl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_country"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/countryTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/not_available"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_state"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/stateTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/not_available"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_city"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/cityTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/not_available"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#E0E0E0" />
+
+                    <TextView
+                        android:id="@+id/addressTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:maxLines="2"
+                        android:padding="4dp"
+                        android:text="@string/label_address"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- RESTORED view2 ID -->
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/md_theme_outline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/locationCard" />
+
+            <!-- Card 2: Academic Details Table -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/detailsCard"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="DOB"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="0.5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view2">
 
-            <TextView
-                android:id="@+id/dobTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="dd/MM/yyyy"
-                android:textColor="@color/black" />
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
 
-        </TableRow>
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_registration_no" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/regNoTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-        <TableRow>
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_dob" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/dobTv" android:text="@string/sample_dob" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Father Name"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_father_name" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/fatherNameTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-            <TextView
-                android:id="@+id/fatherNameTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_mother_name" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/motherNameTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-        </TableRow>
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_branch" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/branchTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-        <TableRow>
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_semester" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/semesterTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Mother Name"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_session" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/sessionTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-            <TextView
-                android:id="@+id/motherNameTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
+                    <TableRow android:paddingBottom="10dp">
+                        <TextView android:text="@string/label_seat_type" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/seatTypeTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
 
-        </TableRow>
+                    <TableRow android:paddingBottom="8dp">
+                        <TextView android:text="@string/label_hostler" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
+                        <TextView android:id="@+id/hostlerTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
+                    </TableRow>
+                </TableLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <TableRow>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Branch"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/branchTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Semester"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/semesterTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Session"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/sessionTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Seat Type"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/seatTypeTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Hostler"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/hostlerTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="20033440008"
-                android:textColor="@color/black" />
-
-        </TableRow>
-
-    </TableLayout>
-
+    <!-- FAB pinned above the scroll -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profileEditBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:backgroundTint="@color/white"
-        android:elevation="6dp"
+        android:layout_margin="24dp"
+        android:backgroundTint="@color/md_theme_primary"
         android:src="@drawable/ic_edit_white"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,9 +31,9 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseFirestore = FirebaseFirestore.getInstance()
 
-        // Move to RegisterActivity
+        // Move to Unique ID Verification
         binding.noAccountTv.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, VerifyUniqueIdActivity::class.java))
         }
 
         // Forgot Password

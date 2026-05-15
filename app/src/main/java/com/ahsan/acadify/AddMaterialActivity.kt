@@ -47,7 +47,7 @@ class AddMaterialActivity : AppCompatActivity() {
                     Constants.semesterCategories
                 ) { dialogInterface, i ->
                     val selectedSemester = Constants.semesterCategories[i]
-                    binding.semTv.text = selectedSemester
+                    binding.semTv.setText(selectedSemester, false)
                 }.show()
         }
         binding.branchTv.setOnClickListener {
@@ -57,7 +57,7 @@ class AddMaterialActivity : AppCompatActivity() {
                     Constants.branchCategories
                 ) { dialogInterface, i ->
                     val selectedBranch = Constants.branchCategories[i]
-                    binding.branchTv.text = selectedBranch
+                    binding.semTv.setText(selectedBranch, false)
                 }.show()
         }
         binding.pickPdfBtn.setOnClickListener(View.OnClickListener { pdfPickIntent() })
@@ -146,8 +146,8 @@ class AddMaterialActivity : AppCompatActivity() {
     private fun clearText() {
         binding.subNameEt.setText("")
         binding.subTopicEt.setText("")
-        binding.branchTv.text = ""
-        binding.semTv.text = ""
+        binding.branchTv.setText("", false)
+        binding.semTv.setText("", false)
         pdfUri = null
     }
 
@@ -162,6 +162,7 @@ class AddMaterialActivity : AppCompatActivity() {
         ActivityResultCallback<ActivityResult>{ result ->
             if (result.resultCode == RESULT_OK){
                 pdfUri = result.data!!.data
+                binding.selectedFileNameTv.text = "Selected PDF: " + (pdfUri?.lastPathSegment ?: "File Selected")
             }else{
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
             }
