@@ -33,4 +33,6 @@
     <color name="md_theme_onSurface">#FF191C1B</color>
     <color name="md_theme_outline">#FF6F7975</color>
     <color name="md_theme_onSurfaceVariant">#FF6F7975</color>
+
+    <color name="hint_color">#757575</color>
 </resources>

@@ -5,69 +5,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F5F7FA"
     tools:context=".AddNoticeActivity">
 
     <!-- Top Toolbar -->
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/toolbarCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="18dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="18dp">
 
             <ImageView
                 android:id="@+id/backBtn"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:contentDescription="Back"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:padding="2dp"
                 android:src="@drawable/ic_back_black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/black" />
+                app:tint="#222222" />
 
             <TextView
                 android:id="@+id/noticeTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:fontFamily="@font/segoe_ui_bold"
                 android:text="Add Notice"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textColor="#111111"
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/pdfBtn"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:contentDescription="Attach PDF"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:padding="2dp"
                 android:src="@drawable/ic_pdf_ttachment_white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/black" />
+                app:tint="#222222" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
-    <!-- Scrollable Content -->
+    <!-- Scroll Content -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
@@ -82,84 +77,149 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="22dp">
 
-            <!-- Title Field -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
+            <!-- Heading -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Notice Title"
-                app:boxBackgroundMode="none"
-                app:boxCornerRadiusBottomEnd="14dp"
-                app:boxCornerRadiusBottomStart="14dp"
-                app:boxCornerRadiusTopEnd="14dp"
-                app:boxCornerRadiusTopStart="14dp"
-                app:endIconDrawable="@drawable/ic_notice_primary"
-                app:endIconMode="custom">
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Create New Notice"
+                android:textColor="#111111"
+                android:textSize="24sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/noticeTitleEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords"
-                    android:paddingVertical="14dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/Gray01" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:text="Fill all notice details carefully"
+                android:textColor="#8A8A8A"
+                android:textSize="13sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            <!-- Notice Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Notice Title"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/noticeTitleEt"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#D6DCE5"
+                android:background="@android:drawable/edit_text"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:hint="Enter notice title"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#111111"
+                android:textColorHint="#9A9A9A"
+                android:textSize="15sp" />
 
             <!-- Notice Number -->
-            <com.google.android.material.textfield.TextInputLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Notice Number"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/noticeNoEt"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#D6DCE5"
+                android:background="@android:drawable/edit_text"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:hint="Enter notice number"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#111111"
+                android:textColorHint="#9A9A9A"
+                android:textSize="15sp" />
+
+            <!-- PDF Section -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:hint="Notice No."
-                app:boxBackgroundMode="none"
-                app:boxCornerRadiusBottomEnd="14dp"
-                app:boxCornerRadiusBottomStart="14dp"
-                app:boxCornerRadiusTopEnd="14dp"
-                app:boxCornerRadiusTopStart="14dp"
-                app:endIconDrawable="@drawable/ic_notice_primary"
-                app:endIconMode="custom">
+                android:layout_marginTop="24dp"
+                android:background="#FFFFFF"
+                android:elevation="1dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/noticeNoEt"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_pdf_ttachment_white"
+                    app:tint="#E53935" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/seg_ui_semibold"
-                    android:imeOptions="actionDone"
-                    android:inputType="textCapWords"
-                    android:paddingVertical="14dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/Gray01" />
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Attach PDF File"
+                        android:textColor="#222222"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:text="Upload notice document"
+                        android:textColor="#8A8A8A"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <!-- Upload Button -->
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/uploadNoticeBtn"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
+                android:layout_height="58dp"
+                android:layout_marginTop="34dp"
+                android:backgroundTint="#4A6CF7"
+                android:fontFamily="@font/segoe_ui_bold"
                 android:text="Upload Notice"
                 android:textAllCaps="false"
-                android:textSize="16sp"
-                android:fontFamily="@font/seg_ui_semibold"
-                app:cornerRadius="14dp" />
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Loading -->
-    <com.google.android.material.card.MaterialCardView
+    <!-- Progress -->
+    <androidx.cardview.widget.CardView
         android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:visibility="gone"
-        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -167,10 +227,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:padding="12dp" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
