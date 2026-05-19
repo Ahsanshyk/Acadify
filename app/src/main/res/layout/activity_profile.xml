@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_background"
+    android:background="#F3F6FB"
     tools:context=".ProfileActivity">
 
-    <!-- Top Background Decor -->
+    <!-- Top Background -->
     <View
         android:id="@+id/topBg"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_width="0dp"
+        android:layout_height="190dp"
         android:background="@drawable/back02"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Bottom White Rounded Background Decor -->
+    <!-- Bottom Background -->
     <View
         android:id="@+id/bottomBg"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/shape_rect04"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Toolbar -->
@@ -30,22 +34,22 @@
         android:id="@+id/toolbarRl"
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/shape_rect01"
+        android:paddingHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
             android:src="@drawable/ic_back_black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white"
+            app:tint="#FFFFFF"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -53,315 +57,449 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile_title"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Profile Image -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profileIv"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="70dp"
-        android:background="@color/md_theme_primaryContainer"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="0dp"
+        android:elevation="6dp"
+        android:padding="2dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_person_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarRl"
-        app:shapeAppearance="@style/styleRoundCornerImage" />
+        app:shapeAppearance="@style/styleRoundCornerImage"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="2dp" />
 
-    <!-- Scrollable Content for smaller devices -->
-    <androidx.core.widget.NestedScrollView
+    <!-- Main Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:fillViewport="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="14dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileIv">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <!-- Name -->
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="16dp">
+            android:text="@string/sample_full_name"
+            android:textAlignment="center"
+            android:textColor="#111827"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/nameTv"
-                android:layout_width="wrap_content"
+        <!-- Verified -->
+        <ImageView
+            android:id="@+id/adminVector"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/ic_verified_user"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/nameTv"
+            app:layout_constraintStart_toEndOf="@id/nameTv"
+            app:layout_constraintTop_toTopOf="@id/nameTv"
+            tools:ignore="ContentDescription" />
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/emailTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/sample_email"
+            android:textColor="#6B7280"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameTv" />
+
+        <!-- UID -->
+        <TextView
+            android:id="@+id/uniqueIdTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="#EEF2FF"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="@string/sample_uid"
+            android:textColor="#4F46E5"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailTv" />
+
+        <!-- Phone -->
+        <TextView
+            android:id="@+id/phoneTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/sample_phone"
+            android:textColor="#6B7280"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/uniqueIdTv" />
+
+        <!-- Location Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/locationCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneTv"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/sample_full_name"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/adminVector"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="4dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_verified_user"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/nameTv"
-                app:layout_constraintStart_toEndOf="@id/nameTv"
-                app:layout_constraintTop_toTopOf="@id/nameTv"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/emailTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/sample_email"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nameTv" />
-
-            <TextView
-                android:id="@+id/uniqueIdTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sample_uid"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/emailTv" />
-
-            <TextView
-                android:id="@+id/phoneTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sample_phone"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/uniqueIdTv" />
-
-            <!-- Card 1: Location & Address -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/locationCard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:strokeColor="#E0E0E0"
-                app:strokeWidth="0.5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/phoneTv">
+                android:orientation="vertical"
+                android:padding="14dp">
 
                 <LinearLayout
+                    android:id="@+id/detailsLl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
+                    <!-- Country -->
                     <LinearLayout
-                        android:id="@+id/detailsLl"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                            android:text="@string/label_country"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_country"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/countryTv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/not_available"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/countryTv"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_state"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/stateTv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/not_available"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/label_city"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/cityTv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/not_available"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
+                            android:layout_marginTop="4dp"
+                            android:text="@string/not_available"
+                            android:textColor="#111827"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
-                    <View
-                        android:id="@+id/view1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="#E0E0E0" />
-
-                    <TextView
-                        android:id="@+id/addressTv"
-                        android:layout_width="wrap_content"
+                    <!-- State -->
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:maxLines="2"
-                        android:padding="4dp"
-                        android:text="@string/label_address"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_state"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/stateTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/not_available"
+                            android:textColor="#111827"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- City -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_city"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/cityTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/not_available"
+                            android:textColor="#111827"
+                            android:textSize="13sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
-            <!-- RESTORED view2 ID -->
-            <View
-                android:id="@+id/view2"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/md_theme_outline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/locationCard" />
+                <!-- Divider -->
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#E5E7EB" />
 
-            <!-- Card 2: Academic Details Table -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/detailsCard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:strokeColor="#E0E0E0"
-                app:strokeWidth="0.5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view2">
-
-                <TableLayout
+                <!-- Address -->
+                <TextView
+                    android:id="@+id/addressTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp">
+                    android:layout_marginTop="10dp"
+                    android:maxLines="2"
+                    android:padding="4dp"
+                    android:text="@string/label_address"
+                    android:textColor="#111827"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_registration_no" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/regNoTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+            </LinearLayout>
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_dob" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/dobTv" android:text="@string/sample_dob" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+        </com.google.android.material.card.MaterialCardView>
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_father_name" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/fatherNameTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+        <!-- Divider -->
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="#E5E7EB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/locationCard" />
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_mother_name" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/motherNameTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+        <!-- Details Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/detailsCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view2"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp">
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_branch" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/branchTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="14dp"
+                android:shrinkColumns="1"
+                android:stretchColumns="1">
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_semester" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/semesterTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+                <TableRow android:paddingBottom="8dp">
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_session" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/sessionTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+                    <TextView
+                        android:text="@string/label_registration_no"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-                    <TableRow android:paddingBottom="10dp">
-                        <TextView android:text="@string/label_seat_type" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/seatTypeTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
+                    <TextView
+                        android:id="@+id/regNoTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
 
-                    <TableRow android:paddingBottom="8dp">
-                        <TextView android:text="@string/label_hostler" android:textColor="@color/black" android:textStyle="bold" android:layout_marginEnd="12dp"/>
-                        <TextView android:id="@+id/hostlerTv" android:text="@string/sample_data" android:textColor="@color/black" android:layout_weight="1"/>
-                    </TableRow>
-                </TableLayout>
-            </com.google.android.material.card.MaterialCardView>
+                <TableRow android:paddingBottom="8dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                    <TextView
+                        android:text="@string/label_dob"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-    <!-- FAB pinned above the scroll -->
+                    <TextView
+                        android:id="@+id/dobTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_dob"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:paddingBottom="8dp">
+
+                    <TextView
+                        android:text="@string/label_father_name"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fatherNameTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:paddingBottom="8dp">
+
+                    <TextView
+                        android:text="@string/label_mother_name"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/motherNameTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:paddingBottom="8dp">
+
+                    <TextView
+                        android:text="@string/label_branch"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/branchTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:paddingBottom="8dp">
+
+                    <TextView
+                        android:text="@string/label_semester"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/semesterTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:paddingBottom="8dp">
+
+                    <TextView
+                        android:text="@string/label_session"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/sessionTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow android:paddingBottom="8dp">
+
+                    <TextView
+                        android:text="@string/label_seat_type"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/seatTypeTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:text="@string/label_hostler"
+                        android:textColor="#374151"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/hostlerTv"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/sample_data"
+                        android:textColor="#111827"
+                        android:textSize="12sp" />
+                </TableRow>
+
+            </TableLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profileEditBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:backgroundTint="@color/md_theme_primary"
+        android:layout_margin="20dp"
         android:src="@drawable/ic_edit_white"
+        app:backgroundTint="#4F46E5"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white"
+        app:tint="#FFFFFF"
         tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
