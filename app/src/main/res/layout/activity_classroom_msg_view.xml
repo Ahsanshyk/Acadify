@@ -1,181 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F5F7FA"
     tools:context=".ClassroomMsgViewActivity">
 
-    <RelativeLayout
+    <!-- Toolbar -->
+    <androidx.cardview.widget.CardView
         android:id="@+id/toolbarRl"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_back_black"
-            app:tint="@color/colorPrimary" />
-
-        <ImageView
-            android:id="@+id/moreBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_more_black"
-            app:tint="@color/colorPrimary" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:text="Message Details"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/bottomRl"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical">
-
-
-
-        <ImageButton
-            android:id="@+id/postBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/shape_circle00"
-            android:src="@drawable/ic_menu_send"
-            app:tint="@color/white" />
-
-    </RelativeLayout>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/bottomRl"
-        android:background="@color/black" />
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/view"
-        android:layout_below="@id/toolbarRl">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/dateTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="45dp"
-                android:text="dd/MM/yyyy"
-                android:textColor="@color/Gray01"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/msgTextTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/segoe_ui_regular"
-                android:hint="Post Your Doubts or Class related Message........"
-                android:inputType="textMultiLine"
-                android:minHeight="300dp"
-                android:textAlignment="textStart"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/nameTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_toEndOf="@id/profileIv"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:maxLines="1"
-                android:maxWidth="300dp"
-                android:text="Person Name"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <View
-                android:id="@+id/view0"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/profileIv"
-                android:layout_marginTop="5dp"
-                android:background="@color/black" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profileIv"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_person_gray"
-                app:shapeAppearanceOverlay="@style/styleRoundCornerImage"
-                app:strokeColor="@color/black"
-                app:strokeWidth="1dp" />
-
-
-
-            <TextView
-                android:id="@+id/attachmentTv"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:text="Attachment"
-                android:gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_below="@id/msgTextTv"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:visibility="gone"/>
+            android:padding="18dp">
 
             <ImageView
-                android:id="@+id/attachPdfBtn"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="20dp"
-                android:layout_below="@id/attachmentTv"
-                android:src="@drawable/ic_pdf_primary"
-                android:visibility="gone"/>
+                android:id="@+id/backBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="2dp"
+                android:src="@drawable/ic_back_black"
+                app:tint="#222222" />
 
+            <ImageView
+                android:id="@+id/moreBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="2dp"
+                android:src="@drawable/ic_more_black"
+                app:tint="#222222" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Message Details"
+                android:textColor="#111111"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Action -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomRl"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:text="Post Reply"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/postBtn"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/shape_circle00"
+                android:backgroundTint="#4A6CF7"
+                android:padding="10dp"
+                android:src="@drawable/ic_menu_send"
+                app:tint="@android:color/white" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/toolbarRl"
+        app:layout_constraintBottom_toTopOf="@id/bottomRl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <!-- User Info -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/profileIv"
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_person_gray"
+                            app:shapeAppearanceOverlay="@style/styleRoundCornerImage"
+                            app:strokeColor="#DDDDDD"
+                            app:strokeWidth="1dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/nameTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoe_ui_bold"
+                                android:maxLines="1"
+                                android:text="Person Name"
+                                android:textColor="#111111"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/dateTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/seg_ui_semibold"
+                                android:text="dd/MM/yyyy"
+                                android:textColor="#8A8A8A"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Message -->
+                    <TextView
+                        android:id="@+id/msgTextTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/segoe_ui_regular"
+                        android:hint="Post Your Doubts or Class related Message........"
+                        android:inputType="textMultiLine"
+                        android:minHeight="220dp"
+                        android:textAlignment="viewStart"
+                        android:textColor="#222222"
+                        android:textColorHint="#9A9A9A"
+                        android:textSize="16sp" />
+
+                    <!-- Attachment Title -->
+                    <TextView
+                        android:id="@+id/attachmentTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Attachment"
+                        android:textColor="#111111"
+                        android:textSize="15sp"
+                        android:visibility="gone" />
+
+                    <!-- Attachment -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="#F8F9FC"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="1dp">
+
+                        <ImageView
+                            android:id="@+id/attachPdfBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="22dp"
+                            android:src="@drawable/ic_pdf_primary"
+                            android:visibility="gone" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

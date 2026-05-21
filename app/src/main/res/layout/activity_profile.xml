@@ -18,16 +18,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Bottom Background -->
-    <View
-        android:id="@+id/bottomBg"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/shape_rect04"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Toolbar -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -299,6 +289,13 @@
                     android:textColor="#111827"
                     android:textSize="13sp"
                     android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/bottomBg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/shape_rect04" />
 
             </LinearLayout>
 
