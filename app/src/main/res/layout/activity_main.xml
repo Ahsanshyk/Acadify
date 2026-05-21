@@ -6,38 +6,57 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#F5F7FA"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
     <!-- Main Content -->
-    <include
-        layout="@layout/app_bar_main"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="#F5F7FA">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#F5F7FA"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="2dp">
+
+            <include
+                layout="@layout/app_bar_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
-        android:layout_width="290dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@android:color/white"
-        android:elevation="10dp"
+        android:elevation="14dp"
         android:fitsSystemWindows="true"
         android:overScrollMode="never"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:headerLayout="@layout/header_layout"
-        app:itemHorizontalPadding="20dp"
+        app:itemBackground="@drawable/shape_rect_03"
+        app:itemHorizontalPadding="22dp"
         app:itemIconPadding="18dp"
         app:itemIconSize="24dp"
-        app:itemIconTint="@android:color/black"
+        app:itemIconTint="#222222"
         app:itemMaxLines="1"
-        app:itemRippleColor="#D6E4FF"
+        app:itemRippleColor="#DDE4FF"
+        app:itemShapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
         app:itemTextAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:itemTextColor="@android:color/black"
+        app:itemTextColor="#111111"
         app:menu="@menu/navigation_items" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
