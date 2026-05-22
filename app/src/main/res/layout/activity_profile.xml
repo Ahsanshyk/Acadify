@@ -1,502 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F6FB"
+    android:background="#F5F7FA"
     tools:context=".ProfileActivity">
 
-    <!-- Top Background -->
-    <View
+    <!-- Header Card -->
+    <androidx.cardview.widget.CardView
         android:id="@+id/topBg"
         android:layout_width="0dp"
-        android:layout_height="190dp"
-        android:background="@drawable/back02"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Bottom Background -->
-
-    <!-- Toolbar -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbarRl"
-        android:layout_width="0dp"
-        android:layout_height="?actionBarSize"
-        android:paddingHorizontal="10dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#4A6CF7"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:src="@drawable/ic_back_black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="#FFFFFF"
-            tools:ignore="ContentDescription" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="18dp">
 
-        <TextView
-            android:id="@+id/titleTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profile_title"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:src="@drawable/ic_back_black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@android:color/white"
+                tools:ignore="ContentDescription" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/titleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="@string/profile_title"
+                android:textColor="@android:color/white"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/backBtn" />
 
-    <!-- Profile Image -->
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/profileIv"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="0dp"
-        android:elevation="6dp"
-        android:padding="2dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_person_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarRl"
-        app:shapeAppearance="@style/styleRoundCornerImage"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="2dp" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileIv"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:layout_marginTop="10dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleTv"
+                app:shapeAppearance="@style/styleRoundCornerImage"
+                app:strokeColor="@android:color/white"
+                app:strokeWidth="2dp" />
 
-    <!-- Main Container -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Profile Card -->
+    <androidx.cardview.widget.CardView
         android:id="@+id/mainContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="14dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:padding="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileIv">
+        app:layout_constraintTop_toBottomOf="@id/topBg">
 
-        <!-- Name -->
-        <TextView
-            android:id="@+id/nameTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sample_full_name"
-            android:textAlignment="center"
-            android:textColor="#111827"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp">
 
-        <!-- Verified -->
-        <ImageView
-            android:id="@+id/adminVector"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/ic_verified_user"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/nameTv"
-            app:layout_constraintStart_toEndOf="@id/nameTv"
-            app:layout_constraintTop_toTopOf="@id/nameTv"
-            tools:ignore="ContentDescription" />
-
-        <!-- Email -->
-        <TextView
-            android:id="@+id/emailTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/sample_email"
-            android:textColor="#6B7280"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nameTv" />
-
-        <!-- UID -->
-        <TextView
-            android:id="@+id/uniqueIdTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="#EEF2FF"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="4dp"
-            android:text="@string/sample_uid"
-            android:textColor="#4F46E5"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emailTv" />
-
-        <!-- Phone -->
-        <TextView
-            android:id="@+id/phoneTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/sample_phone"
-            android:textColor="#6B7280"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/uniqueIdTv" />
-
-        <!-- Location Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/locationCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/phoneTv"
-            app:strokeColor="#E5E7EB"
-            app:strokeWidth="1dp">
-
+            <!-- Name Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="14dp">
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/detailsLl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <!-- Country -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_country"
-                            android:textColor="#6B7280"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/countryTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@string/not_available"
-                            android:textColor="#111827"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <!-- State -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_state"
-                            android:textColor="#6B7280"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/stateTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@string/not_available"
-                            android:textColor="#111827"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <!-- City -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_city"
-                            android:textColor="#6B7280"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/cityTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@string/not_available"
-                            android:textColor="#111827"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <!-- Divider -->
-                <View
-                    android:id="@+id/view1"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#E5E7EB" />
-
-                <!-- Address -->
                 <TextView
-                    android:id="@+id/addressTv"
-                    android:layout_width="match_parent"
+                    android:id="@+id/nameTv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:maxLines="2"
-                    android:padding="4dp"
-                    android:text="@string/label_address"
-                    android:textColor="#111827"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="@string/sample_full_name"
+                    android:textColor="#111111"
+                    android:textSize="18sp" />
 
-                <View
-                    android:id="@+id/bottomBg"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="100dp"
-                    android:background="@drawable/shape_rect04" />
+                <ImageView
+                    android:id="@+id/adminVector"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_verified_user"
+                    android:visibility="gone"
+                    app:drawableTint="#00F459"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/emailTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:text="@string/sample_email"
+                android:textColor="#8A8A8A"
+                android:textSize="11sp" />
 
-        <!-- Divider -->
-        <View
-            android:id="@+id/view2"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="12dp"
-            android:background="#E5E7EB"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/locationCard" />
+            <TextView
+                android:id="@+id/uniqueIdTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="6dp"
+                android:background="#EEF2FF"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp"
+                android:text="@string/sample_uid"
+                android:textColor="#4A6CF7"
+                android:textSize="10sp" />
 
-        <!-- Details Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/detailsCard"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view2"
-            app:strokeColor="#E5E7EB"
-            app:strokeWidth="1dp">
+            <TextView
+                android:id="@+id/phoneTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/seg_ui_semibold"
+                android:text="@string/sample_phone"
+                android:textColor="#8A8A8A"
+                android:textSize="11sp" />
 
-            <TableLayout
+            <!-- Location Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/locationCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="14dp"
-                android:shrinkColumns="1"
-                android:stretchColumns="1">
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#EEF2F7"
+                app:strokeWidth="1dp">
 
-                <TableRow android:paddingBottom="8dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-                    <TextView
-                        android:text="@string/label_registration_no"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:id="@+id/detailsLl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/regNoTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
+                        <!-- Country -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                <TableRow android:paddingBottom="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_country"
+                                android:textColor="#9A9A9A"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                tools:ignore="SmallSp" />
 
-                    <TextView
-                        android:text="@string/label_dob"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/countryTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/not_available"
+                                android:textColor="#111111"
+                                android:textSize="11sp" />
 
-                    <TextView
-                        android:id="@+id/dobTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_dob"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
+                        </LinearLayout>
 
-                <TableRow android:paddingBottom="8dp">
+                        <!-- State -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                    <TextView
-                        android:text="@string/label_father_name"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_state"
+                                android:textColor="#9A9A9A"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/fatherNameTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
+                            <TextView
+                                android:id="@+id/stateTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/not_available"
+                                android:textColor="#111111"
+                                android:textSize="11sp" />
 
-                <TableRow android:paddingBottom="8dp">
+                        </LinearLayout>
 
-                    <TextView
-                        android:text="@string/label_mother_name"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        <!-- City -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/motherNameTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/label_city"
+                                android:textColor="#9A9A9A"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
 
-                <TableRow android:paddingBottom="8dp">
+                            <TextView
+                                android:id="@+id/cityTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/not_available"
+                                android:textColor="#111111"
+                                android:textSize="11sp" />
 
-                    <TextView
-                        android:text="@string/label_branch"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/branchTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
+                    </LinearLayout>
 
-                <TableRow android:paddingBottom="8dp">
-
-                    <TextView
-                        android:text="@string/label_semester"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/semesterTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
-
-                <TableRow android:paddingBottom="8dp">
-
-                    <TextView
-                        android:text="@string/label_session"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/sessionTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
-
-                <TableRow android:paddingBottom="8dp">
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#EEF2F7" />
 
                     <TextView
-                        android:text="@string/label_seat_type"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:id="@+id/addressTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:maxLines="2"
+                        android:text="@string/label_address"
+                        android:textColor="#111111"
+                        android:textSize="11sp" />
 
-                    <TextView
-                        android:id="@+id/seatTypeTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
+                    <View
+                        android:id="@+id/bottomBg"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/shape_rect04" />
 
-                <TableRow>
+                </LinearLayout>
 
-                    <TextView
-                        android:text="@string/label_hostler"
-                        android:textColor="#374151"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
 
-                    <TextView
-                        android:id="@+id/hostlerTv"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/sample_data"
-                        android:textColor="#111827"
-                        android:textSize="12sp" />
-                </TableRow>
+            <!-- Divider -->
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#EEF2F7" />
 
-            </TableLayout>
+            <!-- Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/detailsCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#EEF2F7"
+                app:strokeWidth="1dp">
 
-        </com.google.android.material.card.MaterialCardView>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:shrinkColumns="1"
+                    android:stretchColumns="1">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_registration_no"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/regNoTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_dob"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dobTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_dob"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_father_name"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/fatherNameTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_mother_name"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/motherNameTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_branch"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/branchTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_semester"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/semesterTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_session"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/sessionTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow android:paddingBottom="5dp">
+
+                        <TextView
+                            android:text="@string/label_seat_type"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/seatTypeTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:text="@string/label_hostler"
+                            android:textColor="#8A8A8A"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/hostlerTv"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/sample_data"
+                            android:textColor="#111111"
+                            android:textSize="10sp" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <!-- FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/profileEditBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="16dp"
         android:src="@drawable/ic_edit_white"
-        app:backgroundTint="#4F46E5"
-        app:fabSize="normal"
+        app:backgroundTint="#4A6CF7"
+        app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="#FFFFFF"
+        app:tint="@android:color/white"
         tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

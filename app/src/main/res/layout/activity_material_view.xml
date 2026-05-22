@@ -1,95 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGray00"
+    android:background="#F5F7FA"
     tools:context=".MaterialViewActivity">
 
-    <RelativeLayout
-        android:id="@+id/toolbarRl"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/shape_rect01"
-        android:padding="10dp">
-
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_back_black" />
-
-        <TextView
-            android:id="@+id/noticeTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Study Material"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/topicTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/noticeTv"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="30dp"
-            android:text='Topic'
-            android:textColor="@color/white"
-            android:textSize="12sp"/>
-
-        <TextView
-            android:id="@+id/toolbarSubtitleTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="30dp"
-            android:text="N/N"
-            android:textColor="@color/white"
-            android:textSize="12sp"/>
-
-    </RelativeLayout>
-
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/materialPdfView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbarRl"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
+    <!-- Modern Blue Header -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/toolbarCard"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#4A6CF7"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <RelativeLayout
+            android:id="@+id/toolbarRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:padding="7dp"
+                android:src="@drawable/ic_back_black"
+                app:tint="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/noticeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Study Material"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/topicTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/seg_ui_semibold"
+                    android:text="Topic Name"
+                    android:textColor="#E4EAFF"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/toolbarSubtitleTv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_rect02"
+                android:backgroundTint="#6D89FF"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:gravity="center"
+                android:text="1/5"
+                android:textColor="@android:color/white"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- PDF Viewer Container -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pdfCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarCard">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.github.barteksc.pdfviewer.PDFView
+                android:id="@+id/materialPdfView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="6dp" />
+
+            <!-- Modern Progress Loader -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/progressContainer"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="8dp">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="#4A6CF7" />
+
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Floating Actions -->
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="20dp"
-        app:fab_addButtonColorNormal="@color/colorPrimary"
-        app:fab_addButtonColorPressed="@color/colorPrimary"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="28dp"
+        app:fab_addButtonColorNormal="#4A6CF7"
+        app:fab_addButtonColorPressed="#4A6CF7"
         app:fab_expandDirection="up"
         app:fab_labelStyle="@drawable/shape_rect_03"
-        app:fab_labelsPosition="left">
+        app:fab_labelsPosition="left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/editMaterialBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fabSize="normal"
-            app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/colorPrimary"
+            app:fab_colorNormal="#4A6CF7"
+            app:fab_colorPressed="#4A6CF7"
             app:fab_icon="@drawable/ic_edit_white" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -97,10 +166,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fabSize="normal"
-            app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/colorPrimary"
+            app:fab_colorNormal="#FF5252"
+            app:fab_colorPressed="#FF5252"
             app:fab_icon="@drawable/ic_delete_white" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

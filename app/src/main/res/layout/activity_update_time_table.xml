@@ -1,213 +1,360 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F5F7FA"
     tools:context=".UpdateTimeTableActivity">
 
-    <RelativeLayout
+    <!-- Header -->
+    <androidx.cardview.widget.CardView
         android:id="@+id/toolbarRl"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:elevation="20dp"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_back_black"
-            app:tint="@color/colorPrimary" />
-
-        <TextView
-            android:id="@+id/dayTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Day"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:fontFamily="@font/segoe_ui_bold"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbarRl">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#4A6CF7"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="20dp">
 
-            <EditText
-                android:id="@+id/subjectEt"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="2dp"
+                android:src="@drawable/ic_back_black"
+                app:tint="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="120dp"
-                android:background="@null"
-                android:backgroundTint="@color/colorGray02"
-                android:drawableEnd="@drawable/ic_library_primary"
-                android:drawablePadding="20dp"
-                android:drawableTint="@color/colorGray02"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:hint="Subject Name"
-                android:imeOptions="actionNext"
-                android:inputType="textCapWords"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Gray01" />
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/classTeacherNameEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/subjectEt"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@null"
-                android:backgroundTint="@color/colorGray02"
-                android:drawableEnd="@drawable/ic_person_gray"
-                android:drawablePadding="20dp"
-                android:drawableTint="@color/colorGray02"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:hint="Teacher Name"
-                android:imeOptions="actionNext"
-                android:inputType="textCapWords"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Gray01" />
+                <TextView
+                    android:id="@+id/dayTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Day"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp" />
 
-            <TextView
-                android:id="@+id/startTimeTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/classTeacherNameEt"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@null"
-                android:backgroundTint="@color/colorGray02"
-                android:drawableEnd="@drawable/ic_clock_black"
-                android:drawablePadding="20dp"
-                android:drawableTint="@color/colorGray02"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:gravity="center_vertical"
-                android:hint="Pick Starts Time"
-                android:imeOptions="actionNext"
-                android:inputType="time"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Gray01" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/seg_ui_semibold"
+                    android:text="Manage timetable details"
+                    android:textColor="#DCE4FF"
+                    android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/endTimeTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/startTimeTv"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@null"
-                android:backgroundTint="@color/colorGray02"
-                android:drawableEnd="@drawable/ic_clock_black"
-                android:drawablePadding="20dp"
-                android:drawableTint="@color/colorGray02"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:gravity="center_vertical"
-                android:hint="Pick End Time"
-                android:imeOptions="actionNext"
-                android:inputType="time"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Gray01" />
-
-            <EditText
-                android:id="@+id/ongoingTopicEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/endTimeTv"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@null"
-                android:backgroundTint="@color/colorGray02"
-                android:drawableEnd="@drawable/ic_library_primary"
-                android:drawablePadding="20dp"
-                android:drawableTint="@color/colorGray02"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:hint="Ongoing Topic"
-                android:imeOptions="actionNext"
-                android:inputType="textCapWords"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Gray01" />
-
-            <EditText
-                android:id="@+id/syllabusCompletedEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ongoingTopicEt"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@null"
-                android:backgroundTint="@color/colorGray02"
-                android:drawableEnd="@drawable/ic_person_gray"
-                android:drawablePadding="20dp"
-                android:drawableTint="@color/colorGray02"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:hint="Syllabus Complete %"
-                android:imeOptions="actionNext"
-                android:inputType="textCapWords"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/Gray01" />
-
-
-            <Button
-                android:id="@+id/assClassBtn"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_below="@id/syllabusCompletedEt"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/shape_rect02"
-                android:fontFamily="@font/seg_ui_semibold"
-                android:text="Add"
-                android:textAllCaps="false" />
+            </LinearLayout>
 
         </RelativeLayout>
 
+    </androidx.cardview.widget.CardView>
+
+    <!-- Scroll Content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbarRl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Intro Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="22dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Update Time Table"
+                        android:textColor="#111111"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:text="Fill timetable schedule information"
+                        android:textColor="#9A9A9A"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Form Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="22dp">
+
+                    <!-- Subject -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Subject Name"
+                        android:textColor="#111111"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/subjectEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#EEF2FF"
+                        android:drawableEnd="@drawable/ic_library_primary"
+                        android:drawablePadding="14dp"
+                        android:drawableTint="#4A6CF7"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:hint="Subject Name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="#111111"
+                        android:textColorHint="#9A9A9A"
+                        android:textSize="15sp" />
+
+                    <!-- Teacher -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Teacher Name"
+                        android:textColor="#111111"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/classTeacherNameEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#EEF2FF"
+                        android:drawableEnd="@drawable/ic_person_gray"
+                        android:drawablePadding="14dp"
+                        android:drawableTint="#4A6CF7"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:hint="Teacher Name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="#111111"
+                        android:textColorHint="#9A9A9A"
+                        android:textSize="15sp" />
+
+                    <!-- Start Time -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Start Time"
+                        android:textColor="#111111"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/startTimeTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#EEF2FF"
+                        android:drawableEnd="@drawable/ic_clock_black"
+                        android:drawablePadding="14dp"
+                        android:drawableTint="#4A6CF7"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:gravity="center_vertical"
+                        android:hint="Pick Starts Time"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="#111111"
+                        android:textColorHint="#9A9A9A"
+                        android:textSize="15sp" />
+
+                    <!-- End Time -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="End Time"
+                        android:textColor="#111111"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/endTimeTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#EEF2FF"
+                        android:drawableEnd="@drawable/ic_clock_black"
+                        android:drawablePadding="14dp"
+                        android:drawableTint="#4A6CF7"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:gravity="center_vertical"
+                        android:hint="Pick End Time"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="#111111"
+                        android:textColorHint="#9A9A9A"
+                        android:textSize="15sp" />
+
+                    <!-- Topic -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Ongoing Topic"
+                        android:textColor="#111111"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/ongoingTopicEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#EEF2FF"
+                        android:drawableEnd="@drawable/ic_library_primary"
+                        android:drawablePadding="14dp"
+                        android:drawableTint="#4A6CF7"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:hint="Ongoing Topic"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="#111111"
+                        android:textColorHint="#9A9A9A"
+                        android:textSize="15sp" />
+
+                    <!-- Syllabus -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Syllabus Complete %"
+                        android:textColor="#111111"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/syllabusCompletedEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#EEF2FF"
+                        android:drawableEnd="@drawable/ic_person_gray"
+                        android:drawablePadding="14dp"
+                        android:drawableTint="#4A6CF7"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:hint="Syllabus Complete %"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="#111111"
+                        android:textColorHint="#9A9A9A"
+                        android:textSize="15sp" />
+
+                    <!-- Button -->
+                    <Button
+                        android:id="@+id/assClassBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="34dp"
+                        android:backgroundTint="#4A6CF7"
+                        android:elevation="2dp"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Add"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
-    <RelativeLayout
+    <!-- Progress -->
+    <androidx.cardview.widget.CardView
         android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/shape_circle00"
-        android:backgroundTint="@color/white"
-        android:elevation="30dp"
-        android:visibility="gone">
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center" />
 
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

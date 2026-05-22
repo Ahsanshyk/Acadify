@@ -1,357 +1,400 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F5F7FA"
     tools:context=".LoginActivity">
 
-    <RelativeLayout
-        android:id="@+id/toolbarRl"
-        android:layout_width="match_parent"
+    <!-- Toolbar -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/toolbarCard"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_vertical">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_back_black"
-            app:tint="@color/black"/>
+            android:padding="18dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/seg_ui_semibold"
-            android:text="Material Details"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="normal" />
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="2dp"
+                android:src="@drawable/ic_back_black"
+                app:tint="#222222" />
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="Material Details"
+                android:textColor="#111111"
+                android:textSize="20sp" />
 
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Scroll Content -->
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/materialOptionsLl"
-        android:layout_below="@id/toolbarRl"
-        android:padding="10dp">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:fillViewport="true"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/materialOptionsLl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarCard">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <!-- Material Card -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="3dp">
 
-                <RelativeLayout
-                    android:id="@+id/materialRl"
-                    android:layout_width="110dp"
-                    android:layout_height="150dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@color/textBox">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
-                    <ImageView
-                        android:id="@+id/pdfView"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="@color/Gray01"
-                        android:background="@drawable/ic_material_primary" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/materialRl"
+                            android:layout_width="110dp"
+                            android:layout_height="150dp"
+                            app:cardBackgroundColor="#EEF2F7"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="0dp">
 
-                </RelativeLayout>
+                            <ImageView
+                                android:id="@+id/pdfView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="20dp"
+                                android:src="@drawable/ic_material_primary"
+                                app:tint="#4A6CF7" />
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/subjectTv"
-                    android:layout_toEndOf="@id/materialRl">
+                        </androidx.cardview.widget.CardView>
 
-                    <TableRow>
-
-                        <TextView
-                            android:id="@+id/categoryLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:fontFamily="@font/segoe_ui_bold"
-                            android:text="Topic"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/topicTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
+                            android:layout_marginStart="16dp"
                             android:layout_weight="1"
-                            android:fontFamily="@font/segoe_ui_regular"
-                            android:text="N/A"
-                            android:textColor="@color/black" />
+                            android:orientation="vertical">
 
+                            <TextView
+                                android:id="@+id/subjectTv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/segoe_ui_bold"
+                                android:text="Title of Book"
+                                android:textColor="#111111"
+                                android:textSize="20sp" />
 
-                    </TableRow>
+                            <TableLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp">
 
-                    <TableRow android:layout_marginTop="5dp">
+                                <TableRow>
 
+                                    <TextView
+                                        android:id="@+id/categoryLabelTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoe_ui_bold"
+                                        android:text="Topic"
+                                        android:textColor="#222222"
+                                        android:textSize="13sp" />
 
-                        <TextView
-                            android:id="@+id/dateLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:fontFamily="@font/segoe_ui_bold"
-                            android:text="Date"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/topicTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:fontFamily="@font/seg_ui_semibold"
+                                        android:text="N/A"
+                                        android:textColor="#666666"
+                                        android:textSize="13sp" />
 
-                        <TextView
-                            android:id="@+id/dateTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/segoe_ui_regular"
-                            android:text="N/A"
-                            android:textColor="@color/black" />
+                                </TableRow>
 
+                                <TableRow android:layout_marginTop="8dp">
 
-                    </TableRow>
+                                    <TextView
+                                        android:id="@+id/dateLabelTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoe_ui_bold"
+                                        android:text="Date"
+                                        android:textColor="#222222"
+                                        android:textSize="13sp" />
 
-                    <TableRow android:layout_marginTop="5dp">
+                                    <TextView
+                                        android:id="@+id/dateTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:fontFamily="@font/seg_ui_semibold"
+                                        android:text="N/A"
+                                        android:textColor="#666666"
+                                        android:textSize="13sp" />
 
-                        <TextView
-                            android:id="@+id/sizeLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:fontFamily="@font/segoe_ui_bold"
-                            android:text="Size"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                                </TableRow>
 
-                        <TextView
-                            android:id="@+id/sizeTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/segoe_ui_regular"
-                            android:text="N/A"
-                            android:textColor="@color/black" />
+                                <TableRow android:layout_marginTop="8dp">
 
-                    </TableRow>
+                                    <TextView
+                                        android:id="@+id/sizeLabelTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoe_ui_bold"
+                                        android:text="Size"
+                                        android:textColor="#222222"
+                                        android:textSize="13sp" />
 
-                    <TableRow android:layout_marginTop="5dp">
+                                    <TextView
+                                        android:id="@+id/sizeTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:fontFamily="@font/seg_ui_semibold"
+                                        android:text="N/A"
+                                        android:textColor="#666666"
+                                        android:textSize="13sp" />
 
-                        <TextView
-                            android:id="@+id/viewsLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:fontFamily="@font/segoe_ui_bold"
-                            android:text="Views"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                                </TableRow>
 
-                        <TextView
-                            android:id="@+id/viewsTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/segoe_ui_regular"
-                            android:text="N/A"
-                            android:textColor="@color/black" />
+                                <TableRow android:layout_marginTop="8dp">
 
-                    </TableRow>
+                                    <TextView
+                                        android:id="@+id/viewsLabelTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoe_ui_bold"
+                                        android:text="Views"
+                                        android:textColor="#222222"
+                                        android:textSize="13sp" />
 
-                    <TableRow android:layout_marginTop="5dp">
+                                    <TextView
+                                        android:id="@+id/viewsTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:fontFamily="@font/seg_ui_semibold"
+                                        android:text="N/A"
+                                        android:textColor="#666666"
+                                        android:textSize="13sp" />
 
-                        <TextView
-                            android:id="@+id/downloadsLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:fontFamily="@font/segoe_ui_bold"
-                            android:text="Downloads"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                                </TableRow>
 
-                        <TextView
-                            android:id="@+id/downloadsTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/segoe_ui_regular"
-                            android:text="N/A"
-                            android:textColor="@color/black" />
+                                <TableRow android:layout_marginTop="8dp">
 
-                    </TableRow>
+                                    <TextView
+                                        android:id="@+id/downloadsLabelTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoe_ui_bold"
+                                        android:text="Downloads"
+                                        android:textColor="#222222"
+                                        android:textSize="13sp" />
 
-                    <TableRow android:layout_marginTop="5dp">
+                                    <TextView
+                                        android:id="@+id/downloadsTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:fontFamily="@font/seg_ui_semibold"
+                                        android:text="N/A"
+                                        android:textColor="#666666"
+                                        android:textSize="13sp" />
 
-                        <TextView
-                            android:id="@+id/pagesLabelTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:fontFamily="@font/segoe_ui_bold"
-                            android:text="Pages"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                                </TableRow>
 
-                        <TextView
-                            android:id="@+id/pagesTv"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/segoe_ui_regular"
-                            android:text="N/A"
-                            android:textColor="@color/black" />
+                                <TableRow android:layout_marginTop="8dp">
 
-                    </TableRow>
+                                    <TextView
+                                        android:id="@+id/pagesLabelTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/segoe_ui_bold"
+                                        android:text="Pages"
+                                        android:textColor="#222222"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:id="@+id/pagesTv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:fontFamily="@font/seg_ui_semibold"
+                                        android:text="N/A"
+                                        android:textColor="#666666"
+                                        android:textSize="13sp" />
 
-                </TableLayout>
+                                </TableRow>
 
-                <TextView
-                    android:id="@+id/subjectTv"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/materialRl"
-                    android:fontFamily="@font/segoe_ui_bold"
-                    android:text="Title of Book"
-                    android:textColor="@color/black" />
+                            </TableLayout>
 
+                        </LinearLayout>
 
-            </RelativeLayout>
+                    </LinearLayout>
 
-            <View
-                android:id="@+id/view"
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Comments Section -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/black" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="3dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/commentsLabelTv"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/segoe_ui_bold"
-                    android:padding="5dp"
-                    android:text="Comments"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:padding="18dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/commentsRv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/commentsLabelTv"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/row_comment" />
+                    <TextView
+                        android:id="@+id/commentsLabelTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:text="Comments"
+                        android:textColor="#111111"
+                        android:textSize="18sp" />
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/commentsRv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/row_comment" />
 
-            </RelativeLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Bottom Options -->
     <LinearLayout
         android:id="@+id/materialOptionsLl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="@android:color/white"
+        android:elevation="10dp"
         android:orientation="horizontal"
-        android:elevation="20dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
         android:weightSum="3"
-        android:background="@color/white"
-        android:layout_alignParentBottom="true">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/readMaterialBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:text="Read"
-            android:textSize="10dp"
+            android:backgroundTint="#4A6CF7"
             android:drawableTop="@drawable/ic_library_primary"
-            app:drawableTint="@color/colorPrimary"
-            android:fontFamily="@font/seg_ui_semibold"
-            android:textColor="@color/colorPrimary"
-            style="@style/Widget.Material3.Button.TextButton.Icon"
-            android:background="@color/colorPrimary"/>
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="Read"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            app:drawableTint="@android:color/white" />
 
         <Button
             android:id="@+id/downloadMaterialBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
             android:layout_weight="1"
-            android:text="Download"
-            android:textSize="10dp"
+            android:backgroundTint="#4A6CF7"
             android:drawableTop="@drawable/ic_download_white"
-            app:drawableTint="@color/colorPrimary"
-            android:fontFamily="@font/seg_ui_semibold"
-            android:textColor="@color/colorPrimary"
-            style="@style/Widget.Material3.Button.TextButton.Icon"
-            android:background="@color/colorPrimary"/>
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="Download"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            app:drawableTint="@android:color/white" />
 
         <Button
             android:id="@+id/favoriteBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="6dp"
             android:layout_weight="1"
-            android:text="Add Favorite"
-            android:textSize="10dp"
+            android:backgroundTint="#4A6CF7"
             android:drawableTop="@drawable/ic_favorite_border_white"
-            app:drawableTint="@color/colorPrimary"
-            android:fontFamily="@font/seg_ui_semibold"
-            android:textColor="@color/colorPrimary"
-            style="@style/Widget.Material3.Button.TextButton.Icon"
-            android:background="@color/colorPrimary"/>
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="Favorite"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            app:drawableTint="@android:color/white" />
 
     </LinearLayout>
 
-
+    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addCommentBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/materialOptionsLl"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:backgroundTint="@color/white"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="95dp"
+        android:backgroundTint="#4A6CF7"
         android:elevation="6dp"
         android:src="@drawable/ic_comment_add_black"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@android:color/white" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
