@@ -15,6 +15,7 @@ import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -50,11 +51,11 @@ class MainActivity : AppCompatActivity() {
     var drawerBtn: Toolbar? = null
     var timeTableRv: RecyclerView? = null
 
-    var noticeRl: RelativeLayout? = null
-    var classroomRl: RelativeLayout? = null
-    var timeTableRl: RelativeLayout? = null
-    var libraryRl: RelativeLayout? = null
-    var materialRl: RelativeLayout? = null
+    var noticeRl: CardView? = null
+    var classroomRl: CardView? = null
+    var timeTableRl: CardView? = null
+    var libraryRl: CardView? = null
+    var materialRl: CardView? = null
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseFirestore: FirebaseFirestore
 
